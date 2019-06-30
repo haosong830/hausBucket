@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8EB9702422C86F2000FCF1F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB9702322C86F2000FCF1F5 /* AppDelegate.swift */; };
-		8EB9702622C86F2000FCF1F5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB9702522C86F2000FCF1F5 /* ViewController.swift */; };
+		8EB9702622C86F2000FCF1F5 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB9702522C86F2000FCF1F5 /* CardViewController.swift */; };
 		8EB9702922C86F2000FCF1F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EB9702722C86F2000FCF1F5 /* Main.storyboard */; };
 		8EB9702B22C86F2000FCF1F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EB9702A22C86F2000FCF1F5 /* Assets.xcassets */; };
 		8EB9702E22C86F2000FCF1F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EB9702C22C86F2000FCF1F5 /* LaunchScreen.storyboard */; };
@@ -38,7 +38,7 @@
 /* Begin PBXFileReference section */
 		8EB9702022C86F2000FCF1F5 /* Haus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Haus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EB9702322C86F2000FCF1F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8EB9702522C86F2000FCF1F5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8EB9702522C86F2000FCF1F5 /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
 		8EB9702822C86F2000FCF1F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8EB9702A22C86F2000FCF1F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8EB9702D22C86F2000FCF1F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -102,7 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				8EB9702322C86F2000FCF1F5 /* AppDelegate.swift */,
-				8EB9702522C86F2000FCF1F5 /* ViewController.swift */,
+				8EB9702522C86F2000FCF1F5 /* CardViewController.swift */,
 				8EB9705322C87B4800FCF1F5 /* MainViewController.swift */,
 				8EB9702722C86F2000FCF1F5 /* Main.storyboard */,
 				8EB9705122C86FDF00FCF1F5 /* CollectionViewCell.swift */,
@@ -213,7 +213,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 8EB9701B22C86F2000FCF1F5 /* Build configuration list for PBXProject "Haus" */;
+			buildConfigurationList = 8EB9701B22C86F2000FCF1F5 /* Build configuration list for PBXProject "hbfrontend" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -265,7 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8EB9702622C86F2000FCF1F5 /* ViewController.swift in Sources */,
+				8EB9702622C86F2000FCF1F5 /* CardViewController.swift in Sources */,
 				8EB9702422C86F2000FCF1F5 /* AppDelegate.swift in Sources */,
 				8EB9705222C86FDF00FCF1F5 /* CollectionViewCell.swift in Sources */,
 				8EB9705422C87B4800FCF1F5 /* MainViewController.swift in Sources */,
@@ -529,7 +529,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8EB9701B22C86F2000FCF1F5 /* Build configuration list for PBXProject "Haus" */ = {
+		8EB9701B22C86F2000FCF1F5 /* Build configuration list for PBXProject "hbfrontend" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8EB9704622C86F2000FCF1F5 /* Debug */,

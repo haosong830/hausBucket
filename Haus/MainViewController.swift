@@ -34,6 +34,7 @@ class MainViewController: UIViewController {
     
     @IBAction func AddImages(_ sender: Any) {
         DataArray.insert(DataInfo(longitude:0, latitude:0, altitude:0, text:"All your Bases Are Belong to US", image: UIImage(named: "1.jpg")!), at: 0)
+        NotificationCenter.default.post(name: NSNotification.Name("Update"), object: nil)
     }
     
     /*

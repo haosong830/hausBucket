@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class CardViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var CollectView: UICollectionView!
     //var ImageArray=[UIImage(named: "1.jpg"), UIImage(named: "1.jpg")]
@@ -25,13 +25,18 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     @IBAction func UpdateImages(_ sender: Any) {
         //ImageArray.append(UIImage(named: "1.jpg"))
-        CollectView.reloadData()
+        updateimage()
         
     }
     
+    @objc func updateimage(){
+        CollectView.reloadData()
+    }
     func InsertImage(){
         let insertIndexPath=IndexPath(item:0, section:0)
         CollectView.insertItems(at: [insertIndexPath])
+        
+        updateimage()
         
     }
     func DeleteImage(index: Int){
@@ -43,6 +48,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+         NotificationCenter.default.addObserver(self, selector: #selector(updateimage), name: NSNotification.Name("Update"), object: nil)
         // Do any additional setup after loading the view, typically from a nib.
     }
 

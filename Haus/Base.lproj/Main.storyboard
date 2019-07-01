@@ -54,10 +54,10 @@
             </objects>
             <point key="canvasLocation" x="140" y="132.68365817091455"/>
         </scene>
-        <!--View Controller-->
+        <!--Card View Controller-->
         <scene sceneID="hlc-s2-fHq">
             <objects>
-                <viewController id="i6q-IM-XBq" customClass="ViewController" customModule="Haus" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="i6q-IM-XBq" customClass="CardViewController" customModule="Haus" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1Gg-VT-RRG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="224"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -109,7 +109,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <action selector="UpdateImages:" destination="i6q-IM-XBq" eventType="touchUpInside" id="xnc-dG-rX2"/>
+                                    <action selector="UpdateImages:" destination="i6q-IM-XBq" eventType="touchUpInside" id="JgZ-Ls-Dbu"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -121,9 +121,10 @@
                             <constraint firstItem="Vbz-cT-Ed5" firstAttribute="leading" secondItem="1Gg-VT-RRG" secondAttribute="leading" id="udw-pL-Lfk"/>
                             <constraint firstAttribute="bottom" secondItem="Vbz-cT-Ed5" secondAttribute="bottom" id="yLV-5D-TuH"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="jB7-1T-7we"/>
                     </view>
                     <connections>
-                        <outlet property="CollectView" destination="Vbz-cT-Ed5" id="Ml0-c9-Fk1"/>
+                        <outlet property="CollectView" destination="Vbz-cT-Ed5" id="p7G-xs-2WF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G75-Wt-rh2" userLabel="First Responder" sceneMemberID="firstResponder"/>

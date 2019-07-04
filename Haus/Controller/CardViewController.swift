@@ -23,6 +23,9 @@ class CardViewController: UIViewController, UICollectionViewDelegate, UICollecti
         return cell
     }
     
+    @IBAction func ButtonAction(_ sender: Any) {
+        updateimage()
+    }
     @IBAction func UpdateImages(_ sender: Any) {
         //ImageArray.append(UIImage(named: "1.jpg"))
         updateimage()
@@ -30,7 +33,9 @@ class CardViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     @objc func updateimage(){
-        CollectView.reloadData()
+        DispatchQueue.main.async {
+            self.CollectView.reloadData()
+        }
     }
     func InsertImage(){
         let insertIndexPath=IndexPath(item:0, section:0)
@@ -46,9 +51,11 @@ class CardViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
     }
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
          NotificationCenter.default.addObserver(self, selector: #selector(updateimage), name: NSNotification.Name("Update"), object: nil)
+        CollectView.reloadData()
         // Do any additional setup after loading the view, typically from a nib.
     }
 

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		81704D9722CC652400167C17 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81704D9622CC652400167C17 /* Pin.swift */; };
+		81704D9922CC763800167C17 /* PinViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81704D9822CC763800167C17 /* PinViews.swift */; };
+		81704D9B22CC7E7500167C17 /* HelperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81704D9A22CC7E7500167C17 /* HelperExtensions.swift */; };
+		81704D9E22CD88D100167C17 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81704D9D22CD88D100167C17 /* CoreLocation.framework */; };
 		8EB9702422C86F2000FCF1F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB9702322C86F2000FCF1F5 /* AppDelegate.swift */; };
 		8EB9702622C86F2000FCF1F5 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB9702522C86F2000FCF1F5 /* CardViewController.swift */; };
 		8EB9702922C86F2000FCF1F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EB9702722C86F2000FCF1F5 /* Main.storyboard */; };
@@ -36,6 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		81704D9622CC652400167C17 /* Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
+		81704D9822CC763800167C17 /* PinViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PinViews.swift; path = ../PinViews.swift; sourceTree = "<group>"; };
+		81704D9A22CC7E7500167C17 /* HelperExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperExtensions.swift; sourceTree = "<group>"; };
+		81704D9D22CD88D100167C17 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8EB9702022C86F2000FCF1F5 /* Haus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Haus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EB9702322C86F2000FCF1F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EB9702522C86F2000FCF1F5 /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81704D9E22CD88D100167C17 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +87,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		81704D9C22CD88D100167C17 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				81704D9D22CD88D100167C17 /* CoreLocation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8EB9701722C86F2000FCF1F5 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +102,7 @@
 				8EB9703722C86F2000FCF1F5 /* HausTests */,
 				8EB9704222C86F2000FCF1F5 /* HausUITests */,
 				8EB9702122C86F2000FCF1F5 /* Products */,
+				81704D9C22CD88D100167C17 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,6 +119,9 @@
 		8EB9702222C86F2000FCF1F5 /* Haus */ = {
 			isa = PBXGroup;
 			children = (
+				81704D9622CC652400167C17 /* Pin.swift */,
+				81704D9822CC763800167C17 /* PinViews.swift */,
+				81704D9A22CC7E7500167C17 /* HelperExtensions.swift */,
 				8EB9702322C86F2000FCF1F5 /* AppDelegate.swift */,
 				8EB9702522C86F2000FCF1F5 /* CardViewController.swift */,
 				8EB9705322C87B4800FCF1F5 /* MainViewController.swift */,
@@ -194,7 +215,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Qingyang Liu";
 				TargetAttributes = {
 					8EB9701F22C86F2000FCF1F5 = {
@@ -213,7 +234,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 8EB9701B22C86F2000FCF1F5 /* Build configuration list for PBXProject "hbfrontend" */;
+			buildConfigurationList = 8EB9701B22C86F2000FCF1F5 /* Build configuration list for PBXProject "Haus" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -265,9 +286,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81704D9B22CC7E7500167C17 /* HelperExtensions.swift in Sources */,
 				8EB9702622C86F2000FCF1F5 /* CardViewController.swift in Sources */,
 				8EB9702422C86F2000FCF1F5 /* AppDelegate.swift in Sources */,
+				81704D9922CC763800167C17 /* PinViews.swift in Sources */,
 				8EB9705222C86FDF00FCF1F5 /* CollectionViewCell.swift in Sources */,
+				81704D9722CC652400167C17 /* Pin.swift in Sources */,
 				8EB9705422C87B4800FCF1F5 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -337,6 +361,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -344,6 +369,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -394,6 +420,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -401,6 +428,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -529,7 +557,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8EB9701B22C86F2000FCF1F5 /* Build configuration list for PBXProject "hbfrontend" */ = {
+		8EB9701B22C86F2000FCF1F5 /* Build configuration list for PBXProject "Haus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8EB9704622C86F2000FCF1F5 /* Debug */,

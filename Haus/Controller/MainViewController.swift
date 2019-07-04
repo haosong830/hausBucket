@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import CoreLocation
 
 
 
@@ -15,14 +15,31 @@ import UIKit
 var DataArray=[DataInfo]()
 
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, CLLocationManagerDelegate {
+    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         GetData(latitude: 35.047278, longitude: -85.3078294)
-        print(DataArray.count)
+       
+        // Ask for Authorisation from the User.
+        self.locationManager.requestAlwaysAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
         //GetData(latitude: 0, longitude:0)
         // Do any additional setup after loading the view.
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
+        GetData(latitude: locValue.latitude, longitude: locValue.longitude)
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,10 +47,7 @@ class MainViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func AddImages(_ sender: Any) {
-        DataArray.insert(DataInfo(longitude:0, latitude:0, altitude:0, text:"All your Bases Are Belong to US", image: UIImage(named: "1.jpg")!), at: 0)
-        NotificationCenter.default.post(name: NSNotification.Name("Update"), object: nil)
-    }
+
     
 
     func GetData(latitude: Double, longitude: Double){
@@ -62,14 +76,12 @@ class MainViewController: UIViewController {
             do{
                 let decoder=JSONDecoder()
                 tags=try decoder.decode([Tag].self, from: data)
-                print(tags[0].text)
-                print(tags[0].latitude)
+        
                 
                 for tag in tags{
-                    DataArray.insert(DataInfo(longitude:tag.latitude, latitude:tag.longitude, altitude:0, text: tag.text, image: UIImage(named: "1.jpg")!), at: 0)
+                    DataArray.insert(DataInfo(longitude:tag.longitude, latitude:tag.latitude, altitude:0, text: tag.text, image: UIImage(named: "1.jpg")!), at: 0)
                     
                 }
-                
                 NotificationCenter.default.post(name: NSNotification.Name("Update"), object: nil)
             }catch let jsonErr{
                 print (jsonErr)

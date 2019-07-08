@@ -10,11 +10,12 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class MapViewController: UIViewController, CLLocationManagerDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     let backendip: String="http://localhost"
     
     @IBOutlet weak var Map: MKMapView!
+    var pinAnnotationView:MKPinAnnotationView!
     
     let locationManager = CLLocationManager()
     override func viewDidLoad() {
@@ -25,9 +26,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
+            Map.delegate=self
+            Map.mapType = MKMapType.standard
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
-            SetViewOnCurrentUser()
+           // SetViewOnCurrentUser()
         }
 
  
@@ -49,8 +52,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         }
         
         let center=CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        let region=MKCoordinateRegionMakeWithDistance(center,50,50)
-        Map.setRegion(region, animated: true)
+        //let region=MKCoordinateRegionMakeWithDistance(center,50,50)
+        //Map.setRegion(region, animated: true)
         latitude=location.coordinate.latitude
         longitude=location.coordinate.longitude
         GetData()
@@ -96,8 +99,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                 }
                 for tags in DataArray{
                     let coordinate=CLLocationCoordinate2D(latitude: tags.latitude, longitude: tags.longitude)
-                    let annotation=Annotation(coordinate: coordinate, text: tags.text)
-                    self.Map.addAnnotation(annotation)
+                    let annotationtag=Annotation()
+                    annotationtag.text=tags.text
+                    annotationtag.image=tags.image
+                    annotationtag.coordinate=coordinate
+                    self.pinAnnotationView=MKPinAnnotationView(annotation: annotationtag, reuseIdentifier: "TagPin")
+                    self.Map.addAnnotation(self.pinAnnotationView.annotation!)
                 }
                 
                 NotificationCenter.default.post(name: NSNotification.Name("Update"), object: nil)
@@ -108,8 +115,46 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print(error.localizedDescription)
+    }
+
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let reuseIdentifier = "TagPin"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier)
+        
+        if annotationView == nil {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
+            annotationView?.canShowCallout = true
+        } else {
+            annotationView?.annotation = annotation
+        }
+       
+        
+        if annotation is MKUserLocation{
+            return nil
+        }
+      let customPointAnnotation = annotation as! Annotation
+        
+        annotationView?.image = resizeImage(image: customPointAnnotation.image, newWidth: 50)
+        
+        return annotationView
+    }
     
 
+    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage? {
+        
+        let scale = newWidth / image.size.width
+        let newHeight = image.size.height * scale
+        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+        image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+        
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage
+    }
 
     /*
     // MARK: - Navigation

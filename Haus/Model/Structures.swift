@@ -18,7 +18,10 @@ struct DataInfo{
 }
 
 struct Tag: Decodable{
+    var image: String
     var latitude: Double
     var longitude: Double
     var text: String
 }
+
+

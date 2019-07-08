@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8E15656522CE63770093C8E4 /* Structures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E15656422CE63770093C8E4 /* Structures.swift */; };
+		8E5612A022D01FCA00662851 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E56129F22D01FCA00662851 /* MapViewController.swift */; };
+		8E5612A222D035CF00662851 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5612A122D035CF00662851 /* Annotation.swift */; };
 		8EB9702422C86F2000FCF1F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB9702322C86F2000FCF1F5 /* AppDelegate.swift */; };
 		8EB9702622C86F2000FCF1F5 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB9702522C86F2000FCF1F5 /* CardViewController.swift */; };
 		8EB9702922C86F2000FCF1F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EB9702722C86F2000FCF1F5 /* Main.storyboard */; };
@@ -38,6 +40,8 @@
 
 /* Begin PBXFileReference section */
 		8E15656422CE63770093C8E4 /* Structures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structures.swift; sourceTree = "<group>"; };
+		8E56129F22D01FCA00662851 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		8E5612A122D035CF00662851 /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		8EB9702022C86F2000FCF1F5 /* Haus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Haus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EB9702322C86F2000FCF1F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EB9702522C86F2000FCF1F5 /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
@@ -84,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				8E15656422CE63770093C8E4 /* Structures.swift */,
+				8E5612A122D035CF00662851 /* Annotation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -101,6 +106,7 @@
 		8E15656322CE63300093C8E4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8E56129F22D01FCA00662851 /* MapViewController.swift */,
 				8EB9702522C86F2000FCF1F5 /* CardViewController.swift */,
 				8EB9705322C87B4800FCF1F5 /* MainViewController.swift */,
 			);
@@ -293,9 +299,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EB9702622C86F2000FCF1F5 /* CardViewController.swift in Sources */,
+				8E5612A022D01FCA00662851 /* MapViewController.swift in Sources */,
 				8EB9702422C86F2000FCF1F5 /* AppDelegate.swift in Sources */,
 				8EB9705222C86FDF00FCF1F5 /* CollectionViewCell.swift in Sources */,
 				8EB9705422C87B4800FCF1F5 /* MainViewController.swift in Sources */,
+				8E5612A222D035CF00662851 /* Annotation.swift in Sources */,
 				8E15656522CE63770093C8E4 /* Structures.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

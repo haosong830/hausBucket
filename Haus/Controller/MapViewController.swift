@@ -12,7 +12,8 @@ import CoreLocation
 
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
-    let backendip: String="http://localhost"
+    
+    var timer = Timer()
     
     @IBOutlet weak var Map: MKMapView!
     var pinAnnotationView:MKPinAnnotationView!
@@ -20,10 +21,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     let locationManager = CLLocationManager()
     override func viewDidLoad() {
         super.viewDidLoad()
+        timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(GetData), userInfo: nil, repeats: true)
+
+    
         
         // Ask for Authorisation from the User.
         self.locationManager.requestAlwaysAuthorization()
-        
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
             Map.delegate=self
@@ -51,15 +54,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             return
         }
         
-        let center=CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         //let region=MKCoordinateRegionMakeWithDistance(center,50,50)
         //Map.setRegion(region, animated: true)
         latitude=location.coordinate.latitude
         longitude=location.coordinate.longitude
-        GetData()
+       // GetData()
     }
     
- func GetData(){
+    @objc func GetData(){
         var tags=[Tag]()
         
         let latitudeinstring=String(latitude)
@@ -90,13 +92,15 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 DataArray.removeAll(keepingCapacity: false)
                 //self.Map.removeAnnotations(self.Map.annotations)
                 for tag in tags{
-                    let URLString=self.backendip+"/images/"+tag.image
+                    let URLString=backendip+"/images/"+tag.image
                     let imageURL=URL(string: URLString)!
-                    let imageData = try! Data(contentsOf: imageURL)
+                    let imageData = try Data(contentsOf: imageURL)
                     
-                    DataArray.insert(DataInfo(longitude:tag.longitude, latitude:tag.latitude, altitude:0, text: tag.text, image: UIImage(data: imageData)!), at: 0)
+                    
+                    DataArray.append(DataInfo(longitude:tag.longitude, latitude:tag.latitude, altitude:0, text: tag.text, image: UIImage(data: imageData)!))
                     
                 }
+                DispatchQueue.main.async {
                 for tags in DataArray{
                     let coordinate=CLLocationCoordinate2D(latitude: tags.latitude, longitude: tags.longitude)
                     let annotationtag=Annotation()
@@ -106,8 +110,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                     self.pinAnnotationView=MKPinAnnotationView(annotation: annotationtag, reuseIdentifier: "TagPin")
                     self.Map.addAnnotation(self.pinAnnotationView.annotation!)
                 }
+                }
                 
                 NotificationCenter.default.post(name: NSNotification.Name("Update"), object: nil)
+                
             }catch let jsonErr{
                 print (jsonErr)
             }
@@ -115,10 +121,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
     }
     
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        print(error.localizedDescription)
-    }
-
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let reuseIdentifier = "TagPin"

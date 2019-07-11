@@ -16,11 +16,11 @@ var DataArray=[DataInfo]()
 var latitude: Double=0
 var longitude: Double=0
 var altitude: Double=0
-
+let backendip: String="http://10.140.207.125"
 
 class MainViewController: UIViewController {
   
-    let backendip: String="http://localhost"
+    //let backendip: String="http://localhost"
     override func viewDidLoad() {
         super.viewDidLoad()
         DataArray.removeAll(keepingCapacity: false)

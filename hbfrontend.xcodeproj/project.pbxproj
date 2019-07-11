@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E05516E22D5985A00264700 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E05516D22D5985A00264700 /* CameraViewController.swift */; };
+		8E05517422D69AB700264700 /* UploadImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E05517322D69AB700264700 /* UploadImageViewController.swift */; };
 		8E15656522CE63770093C8E4 /* Structures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E15656422CE63770093C8E4 /* Structures.swift */; };
 		8E5612A022D01FCA00662851 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E56129F22D01FCA00662851 /* MapViewController.swift */; };
 		8E5612A222D035CF00662851 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5612A122D035CF00662851 /* Annotation.swift */; };
@@ -39,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8E05516D22D5985A00264700 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		8E05517322D69AB700264700 /* UploadImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageViewController.swift; sourceTree = "<group>"; };
 		8E15656422CE63770093C8E4 /* Structures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structures.swift; sourceTree = "<group>"; };
 		8E56129F22D01FCA00662851 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		8E5612A122D035CF00662851 /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
@@ -106,8 +110,10 @@
 		8E15656322CE63300093C8E4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8E05517322D69AB700264700 /* UploadImageViewController.swift */,
 				8E56129F22D01FCA00662851 /* MapViewController.swift */,
 				8EB9702522C86F2000FCF1F5 /* CardViewController.swift */,
+				8E05516D22D5985A00264700 /* CameraViewController.swift */,
 				8EB9705322C87B4800FCF1F5 /* MainViewController.swift */,
 			);
 			path = Controller;
@@ -303,6 +309,8 @@
 				8EB9702422C86F2000FCF1F5 /* AppDelegate.swift in Sources */,
 				8EB9705222C86FDF00FCF1F5 /* CollectionViewCell.swift in Sources */,
 				8EB9705422C87B4800FCF1F5 /* MainViewController.swift in Sources */,
+				8E05517422D69AB700264700 /* UploadImageViewController.swift in Sources */,
+				8E05516E22D5985A00264700 /* CameraViewController.swift in Sources */,
 				8E5612A222D035CF00662851 /* Annotation.swift in Sources */,
 				8E15656522CE63770093C8E4 /* Structures.swift in Sources */,
 			);

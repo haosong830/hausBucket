@@ -18,8 +18,10 @@ class CardViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell=collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
+        if (indexPath.row<DataArray.count){
         cell.PhotoView.image=DataArray[indexPath.row].image
         cell.TextInfo.text=DataArray[indexPath.row].text
+        }
         return cell
     }
     

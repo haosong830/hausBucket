@@ -15,6 +15,7 @@ class UploadImageViewController: UIViewController {
     var image:UIImage!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         Uploadimage.image=image
 
         // Do any additional setup after loading the view.
@@ -26,28 +27,107 @@ class UploadImageViewController: UIViewController {
     }
     
     
-    func PostData() {
+    
+    func PostData(){
         
-        let urluploadaddress=backendip+"/api/tags"
-        let url = URL(string: urluploadaddress)!
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        let parameters: [String: Any] = [
+               let urluploadaddress=backendip+"/api/tags"
+                let url = URL(string: urluploadaddress)!
+                var r = URLRequest(url: url)
+       // let urluploadaddress=backendip+"/api/tags"
+       // var r  = URLRequest(url: URL(string: "http://localhost/api/tags")!)
+        r.httpMethod = "POST"
+        let boundary = "Boundary-\(UUID().uuidString)"
+        r.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        let RandomString=randomString(length: 5)+".jpg"
+        let params: [String: Any] = [
             "latitude": latitude,
             "longitude": longitude,
             "tag": TextField.text,
-            "image": "icecream.jpg"
+            "image": RandomString
         ]
         
-        print(parameters.percentEscaped().data(using: .utf8)!)
-        request.httpBody = parameters.percentEscaped().data(using: .utf8)
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            
+        let chosenImage=Uploadimage.image
+        r.httpBody = createBody(parameters: params ,
+                                boundary: boundary,
+                                data: UIImageJPEGRepresentation(chosenImage!, 0.7)!,
+                                mimeType: "multipart/form-data",
+                                filename: RandomString)
+        let task = URLSession.shared.dataTask(with: r) { (data, response, error) in
+            if (error==nil){
+                
+            }else{
+                print (error)
+            }
             
         }
         task.resume()
         
+        
     }
+    
+    func randomString(length: Int) -> String {
+        
+        let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        let len = UInt32(letters.length)
+        
+        var randomString = ""
+        
+        for _ in 0 ..< length {
+            let rand = arc4random_uniform(len)
+            var nextChar = letters.character(at: Int(rand))
+            randomString += NSString(characters: &nextChar, length: 1) as String
+        }
+        
+        return randomString
+    }
+    
+    
+    func createBody(parameters: [String: Any],
+                    boundary: String,
+                    data: Data,
+                    mimeType: String,
+                    filename: String) -> Data {
+        let body = NSMutableData()
+        
+        let boundaryPrefix = "--\(boundary)\r\n"
+        
+        for (key, value) in parameters {
+            body.appendString(boundaryPrefix)
+            body.appendString("Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n")
+            body.appendString("\(value)\r\n")
+        }
+        
+        body.appendString(boundaryPrefix)
+        body.appendString("Content-Disposition: form-data; name=\"image\"; filename=\"\(filename)\"\r\n")
+        body.appendString("Content-Type: \(mimeType)\r\n\r\n")
+        body.append(data)
+        body.appendString("\r\n")
+        body.appendString("--".appending(boundary.appending("--")))
+        
+        return body as Data
+    }
+//    func PostData() {
+//
+//        let urluploadaddress=backendip+"/api/tags"
+//        let url = URL(string: urluploadaddress)!
+//        var request = URLRequest(url: url)
+//        request.httpMethod = "POST"
+//        let parameters: [String: Any] = [
+//            "latitude": latitude,
+//            "longitude": longitude,
+//            "tag": TextField.text,
+//            "image": "icecream.jpg"
+//        ]
+//
+//        print(parameters.percentEscaped().data(using: .utf8)!)
+//        request.httpBody = parameters.percentEscaped().data(using: .utf8)
+//        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+//
+//
+//        }
+//        task.resume()
+//
+//    }
     /*
     // MARK: - Navigation
 
@@ -80,4 +160,10 @@ extension CharacterSet {
         allowed.remove(charactersIn: "\(generalDelimitersToEncode)\(subDelimitersToEncode)")
         return allowed
     }()
+}
+extension NSMutableData {
+    func appendString(_ string: String) {
+        let data = string.data(using: String.Encoding.utf8, allowLossyConversion: false)
+        append(data!)
+    }
 }

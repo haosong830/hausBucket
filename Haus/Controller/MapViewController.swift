@@ -21,6 +21,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     let locationManager = CLLocationManager()
     override func viewDidLoad() {
         super.viewDidLoad()
+        Map.delegate=self
         timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(GetData), userInfo: nil, repeats: true)
 
     

@@ -56,6 +56,7 @@ class CardViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        CollectView.delegate=self
         CollectView.reloadData()
          NotificationCenter.default.addObserver(self, selector: #selector(updateimage), name: NSNotification.Name("Update"), object: nil)
         
